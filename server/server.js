@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 app.use(webpackHotMiddleware(compiler));
 app.use(webpackDevMiddleware(compiler));
 
-app.get(['/', '/login', '/profile'], (req, res) => {
+/*app.get(['/', '/login', '/profile'], (req, res) => {
 	let renderFullPage=(html, preloadedState) => {
 		return `
 			<!DOCTYPE html>
@@ -69,7 +69,12 @@ app.get(['/', '/login', '/profile'], (req, res) => {
 			res.status(404).send('Not found');
 		}
 	});
-});
+});*/
+app.use(express.static('src'))
+
+// app.get('*', (req, res) => {
+
+// })
 
 app.post('/profile', (req, res) => {
 	const { username, password }=req.body;
